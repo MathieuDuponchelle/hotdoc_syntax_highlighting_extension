@@ -27,7 +27,7 @@ PRISM_COMP_DIR = os.path.join(PRISM_DIR, 'components')
 with open(os.path.join('hotdoc_syntax_highlighting_extension', 'VERSION.txt'), 'r') as _:
     VERSION = _.read().strip()
 
-DIST_FILES = ['VERSION.txt']
+DIST_FILES = ['VERSION.txt', 'prism_autoloader_path_override.js']
 
 for root, dirs, files in os.walk(PRISM_COMP_DIR):
     for f in files:
