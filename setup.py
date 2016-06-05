@@ -20,8 +20,23 @@ import os
 
 from setuptools import setup, find_packages
 
+SOURCE_DIR = os.path.abspath('./')
+PRISM_DIR = os.path.join(SOURCE_DIR, 'hotdoc_syntax_highlighting_extension', 'prism')
+PRISM_COMP_DIR = os.path.join(PRISM_DIR, 'components')
+
 with open(os.path.join('hotdoc_syntax_highlighting_extension', 'VERSION.txt'), 'r') as _:
     VERSION = _.read().strip()
+
+DIST_FILES = ['VERSION.txt']
+
+for root, dirs, files in os.walk(PRISM_COMP_DIR):
+    for f in files:
+        path = os.path.join(root, f)
+        path = os.path.relpath(path, 'hotdoc_syntax_highlighting_extension')
+        DIST_FILES.append(path)
+
+DIST_FILES.append(os.path.join(PRISM_DIR, 'plugins', 'autoloader', 'prism-autoloader.js'))
+DIST_FILES.append(os.path.join(PRISM_DIR, 'LICENSE'))
 
 setup(
     name = "hotdoc_syntax_highlighting_extension",
@@ -33,6 +48,6 @@ setup(
     description = ("An extension for hotdoc using prism for syntax highlighting"),
     author = "Mathieu Duponchelle",
     packages = find_packages(),
-    package_data = {'hotdoc_syntax_highlighting_extension': ['VERSION.txt']},
+    package_data = {'hotdoc_syntax_highlighting_extension': DIST_FILES},
     entry_points = {'hotdoc.extensions': 'get_extension_classes = hotdoc_syntax_highlighting_extension.syntax_extension:get_extension_classes'},
 )
