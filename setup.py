@@ -36,6 +36,7 @@ for root, dirs, files in os.walk(PRISM_COMP_DIR):
         DIST_FILES.append(path)
 
 DIST_FILES.append(os.path.join(PRISM_DIR, 'plugins', 'autoloader', 'prism-autoloader.js'))
+DIST_FILES.append(os.path.join(PRISM_DIR, 'themes', 'prism.css'))
 DIST_FILES.append(os.path.join(PRISM_DIR, 'LICENSE'))
 
 setup(
