@@ -1,0 +1,3 @@
+[submodule "hotdoc_syntax_highlighting_extension/prism"]
+	path = hotdoc_syntax_highlighting_extension/prism
+	url = https://github.com/PrismJS/prism.git
